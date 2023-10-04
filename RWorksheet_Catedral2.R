@@ -84,11 +84,37 @@ data
 #8. 
 #A.
 TopCelebrity <- data.frame (
-  PowerRanking = 1:25,
-  CelebrityName = c("Tom Cruise" , "Rolling Stones", "Oprah Winfrey", "U2","Tiger Woods", "Steven Spielberg", "Howard Stern", "50 Cent", "Cast of the Sopranos", "Dan Brown", "Bruce Springsteen", "Donald Trump", "Muhammad Ali", "Paul McCartney", "George Lucas", "Elton John", "David Letterman", "Phil Mickelson", "J.K Rowling", "Bradd Pitt", "Peter Jackson", "Dr. Phil McGraw", "Jay Lenon", "Celine Dion", "Kobe Bryant"),
-  Pay = c(67, 90, 225, 110, 90, 332, 302, 41, 52, 88, 55, 44, 55, 40, 233, 34, 40, 47, 75, 25, 39, 45, 32, 40, 31)
+PowerRanking = 1:25,
+CelebrityName = c("Tom Cruise" , "Rolling Stones", "Oprah Winfrey", "U2","Tiger Woods", "Steven Spielberg", "Howard Stern", "50 Cent", "Cast of the Sopranos", "Dan Brown", "Bruce Springsteen", "Donald Trump", "Muhammad Ali", "Paul McCartney", "George Lucas", "Elton John", "David Letterman", "Phil Mickelson", "J.K Rowling", "Bradd Pitt", "Peter Jackson", "Dr. Phil McGraw", "Jay Lenon", "Celine Dion", "Kobe Bryant"),
+Pay = c(67, 90, 225, 110, 90, 332, 302, 41, 52, 88, 55, 44, 55, 40, 233, 34, 40, 47, 75, 25, 39, 45, 32, 40, 31)
 )
 TopCelebrity
+#PowerRanking        CelebrityName Pay
+#1             1           Tom Cruise  67
+#2             2       Rolling Stones  90
+#3             3        Oprah Winfrey 225
+#4             4                   U2 110
+#5             5          Tiger Woods  90
+#6             6     Steven Spielberg 332
+#7             7         Howard Stern 302
+#8             8              50 Cent  41
+#9             9 Cast of the Sopranos  52
+#10           10            Dan Brown  88
+#11           11    Bruce Springsteen  55
+#12           12         Donald Trump  44
+#13           13         Muhammad Ali  55
+#14           14       Paul McCartney  40
+#15           15         George Lucas 233
+#16           16           Elton John  34
+#17           17      David Letterman  40
+#18           18       Phil Mickelson  47
+#19           19          J.K Rowling  75
+#20           20           Bradd Pitt  25
+#21           21        Peter Jackson  39
+#22           22      Dr. Phil McGraw  45
+#23           23            Jay Lenon  32
+#24           24          Celine Dion  40
+#25           25          Kobe Bryant  31
 
 #B.
 NewRanking <- replace(TopCelebrity$PowerRanking, 19, 15)
@@ -97,15 +123,17 @@ NewPay <- replace(TopCelebrity$Pay, 19, 90)
 NewPay
 
 Newtopceleb <- data.frame(
-  PowerRanking = NewRanking,
-  CelebrityName = TopCelebrity$CelebrityName,  
-  Pay = NewPay
+PowerRanking = NewRanking,
+CelebrityName = TopCelebrity$CelebrityName,  
+Pay = NewPay
 )
 Newtopceleb
 
+
 #C.
+# Install and load the 'writexl' library for writing Excel files
 install.packages("writexl")
-library(writexl)          # Install and load the 'writexl' library for writing Excel files
+library(writexl)
 write_xlsx(TopCelebrity, path = "PowerRanking.xlsx")
 write.csv(TopCelebrity, file = "PowerRanking.csv", row.names = FALSE)
 
@@ -114,8 +142,8 @@ subset_data <- TopCelebrity[10:20, ]
 save(subset_data, file = "Ranks.RData")
 print(subset_data)
 
-#E.
-#This script will produce the "Ranks.RData" RData file. comprising the subset of the first data frame's rows 10 to 20.
+#E. This script will create an RData file named "Ranks.RData" containing the subset of rows 10 to 20 from the original data frame.
+
 
 #9.
 
@@ -127,6 +155,96 @@ ExcelDta
 #B.
 dimensions <- dim(ExcelDta)
 dimensions
+# PowerRanking        CelebrityName Pay
+#1             1           Tom Cruise  67
+#2             2       Rolling Stones  90
+#3             3        Oprah Winfrey 225
+#4             4                   U2 110
+#5             5          Tiger Woods  90
+#6             6     Steven Spielberg 332
+#7             7         Howard Stern 302
+#8             8              50 Cent  41
+#9             9 Cast of the Sopranos  52
+#10           10            Dan Brown  88
+#11           11    Bruce Springsteen  55
+#12           12         Donald Trump  44
+#13           13         Muhammad Ali  55
+#14           14       Paul McCartney  40
+#15           15         George Lucas 233
+#16           16           Elton John  34
+#17           17      David Letterman  40
+#18           18       Phil Mickelson  47
+#19           15          J.K Rowling  90
+#20           20           Bradd Pitt  25
+#21           21        Peter Jackson  39
+#22           22      Dr. Phil McGraw  45
+#23           23            Jay Lenon  32
+#24           24          Celine Dion  40
+#25           25          Kobe Bryant  31
+
+
+#C.
+install.packages("writexl")
+library(writexl)          # Install and load the 'writexl' library for writing Excel files
+write_xlsx(TopCelebrity, path = "PowerRanking.xlsx")
+write.csv(TopCelebrity, file = "PowerRanking.csv", row.names = FALSE)
+# library(readxl)
+# PowerRanking <- read_excel("PowerRanking.xlsx")
+# View(PowerRanking)                                                   
+# (PowerRanking)                                                   
+
+
+#D.
+subset_data <- TopCelebrity[10:20, ]
+save(subset_data, file = "Ranks.RData")
+print(subset_data)
+#PowerRanking     CelebrityName Pay
+#10           10         Dan Brown  88
+#11           11 Bruce Springsteen  55
+#12           12      Donald Trump  44
+#13           13      Muhammad Ali  55
+#14           14    Paul McCartney  40
+#15           15      George Lucas 233
+#16           16        Elton John  34
+#17           17   David Letterman  40
+#18           18    Phil Mickelson  47
+#19           19       J.K Rowling  75
+#20           20        Bradd Pitt  25
+
+#E.
+#This script will produce the "Ranks.RData" RData file. 
+#comprising the subset of the first data frame's rows 10 to 20.
+
+#9.
+#A.
+library(readxl)
+ExcelDta <- read_excel("hotels-vienna.xlsx")
+ExcelDta
+## A tibble: 428 × 24
+#country city_actual rating_count center1label center2label neighbourhood price
+#<chr>   <chr>       <chr>        <chr>        <chr>        <chr>         <dbl>
+ # 1 Austria Vienna      36           City centre  Donauturm    17. Hernals      81
+#2 Austria Vienna      189          City centre  Donauturm    17. Hernals      81
+#3 Austria Vienna      53           City centre  Donauturm    Alsergrund       85
+#4 Austria Vienna      55           City centre  Donauturm    Alsergrund       83
+#5 Austria Vienna      33           City centre  Donauturm    Alsergrund       82
+#6 Austria Vienna      25           City centre  Donauturm    Alsergrund      229
+#7 Austria Vienna      57           City centre  Donauturm    Alsergrund      103
+#8 Austria Vienna      161          City centre  Donauturm    Alsergrund      150
+#9 Austria Vienna      50           City centre  Donauturm    Alsergrund       80
+#10 Austria Vienna      NA           City centre  Donauturm    Alsergrund      153
+# ℹ 418 more rows
+# ℹ 17 more variables: city <chr>, stars <dbl>, ratingta <chr>,
+#   ratingta_count <chr>, scarce_room <dbl>, hotel_id <dbl>, offer <dbl>,
+#   offer_cat <chr>, year <dbl>, month <dbl>, weekend <dbl>, holiday <dbl>,
+#   distance <dbl>, distance_alter <dbl>, accommodation_type <chr>, nnights <dbl>,
+#   rating <chr>
+# ℹ Use `print(n = ...)` to see more rows
+
+#B.
+dimensions <- dim(ExcelDta)
+dimensions
+#428  24
 
 #C.
 selected_columns <- ExcelDta[, c("country", "neighbourhood", "price", "stars", "accommodation_type", "rating")]
@@ -139,8 +257,17 @@ save(selected_columns, file = "new.RData")
 load("new.RData")
 head(selected_columns)
 tail(selected_columns)
-
-
+#head(selected_columns)
+# A tibble: 6 × 6
+#country neighbourhood price stars accommodation_type rating            
+#<chr>   <chr>         <dbl> <dbl> <chr>              <chr>             
+  #1 Austria 17. Hernals      81     4 Apartment          4.4000000000000004
+#2 Austria 17. Hernals      81     4 Hotel              3.9               
+#3 Austria Alsergrund       85     4 Hotel              3.7               
+#4 Austria Alsergrund       83     3 Hotel              4                 
+#5 Austria Alsergrund       82     4 Hotel              3.9               
+#6 Austria Alsergrund      229     5 Apartment          4.8               
+  
 
 #10.
 #A.
