@@ -128,34 +128,7 @@ CelebrityName = TopCelebrity$CelebrityName,
 Pay = NewPay
 )
 Newtopceleb
-
-
-#C.
-# Install and load the 'writexl' library for writing Excel files
-install.packages("writexl")
-library(writexl)
-write_xlsx(TopCelebrity, path = "PowerRanking.xlsx")
-write.csv(TopCelebrity, file = "PowerRanking.csv", row.names = FALSE)
-
-#D.
-subset_data <- TopCelebrity[10:20, ]
-save(subset_data, file = "Ranks.RData")
-print(subset_data)
-
-#E. This script will create an RData file named "Ranks.RData" containing the subset of rows 10 to 20 from the original data frame.
-
-
-#9.
-
-#A.
-library(readxl)
-ExcelDta <- read_excel("hotels-vienna.xlsx")
-ExcelDta
-
-#B.
-dimensions <- dim(ExcelDta)
-dimensions
-# PowerRanking        CelebrityName Pay
+#PowerRanking        CelebrityName Pay
 #1             1           Tom Cruise  67
 #2             2       Rolling Stones  90
 #3             3        Oprah Winfrey 225
@@ -182,23 +155,18 @@ dimensions
 #24           24          Celine Dion  40
 #25           25          Kobe Bryant  31
 
-
 #C.
+# Install and load the 'writexl' library for writing Excel files
 install.packages("writexl")
-library(writexl)          # Install and load the 'writexl' library for writing Excel files
+library(writexl)
 write_xlsx(TopCelebrity, path = "PowerRanking.xlsx")
 write.csv(TopCelebrity, file = "PowerRanking.csv", row.names = FALSE)
-# library(readxl)
-# PowerRanking <- read_excel("PowerRanking.xlsx")
-# View(PowerRanking)                                                   
-# (PowerRanking)                                                   
-
 
 #D.
 subset_data <- TopCelebrity[10:20, ]
 save(subset_data, file = "Ranks.RData")
 print(subset_data)
-#PowerRanking     CelebrityName Pay
+#owerRanking     CelebrityName Pay
 #10           10         Dan Brown  88
 #11           11 Bruce Springsteen  55
 #12           12      Donald Trump  44
@@ -211,9 +179,7 @@ print(subset_data)
 #19           19       J.K Rowling  75
 #20           20        Bradd Pitt  25
 
-#E.
-#This script will produce the "Ranks.RData" RData file. 
-#comprising the subset of the first data frame's rows 10 to 20.
+#E. This script will create an RData file named "Ranks.RData" containing the subset of rows 10 to 20 from the original data frame.
 
 #9.
 #A.
@@ -267,7 +233,20 @@ tail(selected_columns)
 #4 Austria Alsergrund       83     3 Hotel              4                 
 #5 Austria Alsergrund       82     4 Hotel              3.9               
 #6 Austria Alsergrund      229     5 Apartment          4.8               
-  
+#> tail(selected_columns)
+# A tibble: 6 × 6
+#country neighbourhood price stars accommodation_type rating            
+#<chr>   <chr>         <dbl> <dbl> <chr>              <chr>             
+  #1 Austria Wieden           73   3   Hotel              3.4               
+#2 Austria Wieden          109   3   Apartment          5                 
+#3 Austria Wieden          185   5   Hotel              4.3               
+#4 Austria Wieden          100   4   Hotel              4.4000000000000004
+#5 Austria Wieden           58   3   Hotel              3.2               
+#6 Austria Wieden          110   3.5 Apartment          4     
+
+
+
+
 
 #10.
 #A.
