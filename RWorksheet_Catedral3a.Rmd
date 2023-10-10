@@ -88,7 +88,7 @@ min_temp_city
 # min_temp_city
 # "Davao City"
 ```
-#2.                     "USING MATRIX"
+#                  "USING MATRIX"
 
 #Number 2:
 ```{r num2matrix1}
