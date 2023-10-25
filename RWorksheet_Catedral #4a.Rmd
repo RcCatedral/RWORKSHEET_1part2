@@ -1,0 +1,36 @@
+---
+title: "RWORKSHEET_CATEDRAL#4A"
+author: "RC CATEDRAL"
+date: "2023-10-25"
+output: pdf_document
+---
+#1
+#A
+```{r num1 a}
+ShoeSize <- c(6.5, 9.0, 8.5, 8.5, 10.5, 7.0, 9.5, 9.0, 13.0, 7.5, 10.5, 8.5)
+Height <- c(66.0, 68.0, 64.5, 65.0, 70.0, 71.0, 72.0, 64.0, 74.5, 67.0, 71.0, 71.0)
+
+df <- data.frame(ShoeSize, Height)
+print(df)
+```
+#B
+```{r num1 b}
+males <- subset(df, ShoeSize>=9)
+females <- subset(df, ShoeSize<9)
+
+print(males)
+print(females)
+```
+#C
+```{r num1 c}
+mean_ShoeSize <- mean(ShoeSize)
+cat("Mean ShoeSize:", mean_ShoeSize, "\n")
+mean_Height <- mean(Height)
+cat("Mean Height:", mean_Height, "\n")
+```
+#D
+
+
+#2
+```{r num2 }
+months <- c("March", "April", "January", "November", "January", "September", "October", "September", "November", "August")
