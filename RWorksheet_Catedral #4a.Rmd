@@ -29,6 +29,7 @@ mean_Height <- mean(Height)
 cat("Mean Height:", mean_Height, "\n")
 ```
 #D
+# For instance,Taller people often have bigger feet and therefore tend to wear larger shoe sizes. #However, this isn't a fixed rule, as factors like genetics and individual foot structure can #influence the relationship between height and shoe size.
 
 
 #2
