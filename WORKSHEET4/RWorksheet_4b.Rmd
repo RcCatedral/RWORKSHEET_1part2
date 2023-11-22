@@ -11,7 +11,7 @@ zero_matrix <- matrix(0, nrow = 5, ncol = 5)
 result_matrix <- zero_matrix + vectorA
 print(result_matrix)
 ```
-
+#2
 ```{r num2}
 rows <- 5
 cols <- 5
@@ -28,7 +28,7 @@ for (i in 1:rows) {
 }
 
 ```
-
+#3
 ```{r num3 }
 n <- as.integer(readline(prompt = "Enter a number to start the Fibonacci sequence: "))
 
@@ -56,17 +56,18 @@ cat("\n")
 
 ```
 
+#4
 ```{r num4}
-Household_data <- read_csv("Household data.csv")
-Household_data
+Shoe_sizes <- read_csv("Shoe_sizes.csv")
+Shoe_sizes
 ```
 ```{r num 4a}
-head(Household_data)
+head(Shoe_sizes)
 
 ```
 ```{r num 4b}
-male_subset <- subset(Household_data, Gender...6 == "M")
-female_subset <- subset(Household_data, Gender...6 == "F")
+male_subset <- subset(Shoe_sizes, Gender...6 == "M")
+female_subset <- subset(Shoe_sizes, Gender...6 == "F")
 
 num_male <- nrow(male_subset)
 num_female <- nrow(female_subset)
@@ -80,16 +81,69 @@ cat("Number of observations in Female subset:", num_female, "\n")
 
 
 ```{r num 4c}
-missing_values <- sum(is.na(Household_data$Gender...6) | Household_data$Gender...6 == "")
+GraphMF<- table(Shoe_sizes$Gender...6)
+barplot(GraphMF,
+        main = "Number of Males and Females",
+        xlab = "Gender",
+        ylab = "Count",
+        col = c("blue", "violet"),
+        legend.text = c("Male", "Female"),
+        beside = TRUE)
+```
 
-if (missing_values > 0) {
-  count_gender <- table(Household_data$Gender...6)
+#5
+```{r num5}
+expenses <- c(Food = 60, Electricity = 10, Savings = 5, Miscellaneous = 25)
 
+pie(expenses, labels = paste(names(expenses), "(", round((expenses/sum(expenses))*100), "%)"), 
+    col = c("Red", "Green", "Blue", "White"),
+    main = "Monthly Expenses of Dela Cruz Family")
 
-  barplot(count_gender, main = "Number of Males and Females",
-          xlab = "Gender", ylab = "Count",
-          col = c("blue", "pink"), legend = TRUE)
-}
+legend("topright", legend = names(expenses), fill = c("Red", "Green", "Blue", "White"))
+
 
 ```
+#6
+```{r num 6a}
+data(iris)
+str(iris)
+
+```
+```{r num 6b}
+mean_values <- c(mean(iris$Sepal.Length),
+mean(iris$Sepal.Width),
+mean(iris$Petal.Length),
+mean(iris$Petal.Width))
+```
+
+```{r num 6c}
+pie(table(iris$Species), labels = c("Setosa", "Versicolor", "Virginica"), col = c("Purple", "Blue", "Violet"), main = "Species Distribution")
+```
+```{r num 6d}
+setosa_data <- iris[iris$Species == "setosa", ]
+versicolor_data <- iris[iris$Species == "versicolor", ]
+virginica_data <- iris[iris$Species == "virginica", ]
+
+head(setosa_data, 6)
+head(versicolor_data, 6)
+head(virginica_data, 6)
+
+```
+```{r num 6e}
+plot(x = iris$Sepal.Length[iris$Species == "setosa"], y = iris$Sepal.Width[iris$Species == "setosa"], pch = 16, col = "violet", main = "Iris Dataset", xlab = "Sepal Length", ylab = "Sepal Width")
+points(x = iris$Sepal.Length[iris$Species == "versicolor"], y = iris$Sepal.Width[iris$Species == "versicolor"], pch = 17, col = "purple")
+points(x = iris$Sepal.Length[iris$Species == "virginica"], y = iris$Sepal.Width[iris$Species == "virginica"], pch = 18, col = "Blue")
+```
+```{r num 6f}
+#Setosa which is the color Violet according to my graph is the longest sepal lenght and width
+```
+
+#7
+```{r num 7a}
+alexa_file <- read_xlsx("alexa_file.xlsx")
+alexa_file
+
+```
+
+
 
