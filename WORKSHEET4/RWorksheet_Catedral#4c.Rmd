@@ -1,0 +1,101 @@
+---
+title: "RWORKSHEET_4C"
+author: "RcCatedral"
+date: "2023-12-06"
+output: pdf_document
+---
+
+#1
+```{num1 a}
+data <- read.csv("mpg-1.csv")
+data
+```
+
+```{rnum1 b}
+#install.packages("ggplot2")
+
+library(ggplot2)
+
+data(mpg)
+
+str(mpg)
+
+#"manufacturer", "model", "trans", "drv", "fl", "class"
+```
+
+```{r c}
+#"displ," "year," "cyl," "cty,", "hwy"
+```
+
+#2
+```{rnum2}
+data(mpg)
+
+manufacturer_most_models <- names(sort(table(mpg$manufacturer), decreasing = TRUE))[1]
+
+model_most_variations <- names(sort(table(mpg$model), decreasing = TRUE))[1]
+
+cat("Manufacturer with the most models:", manufacturer_most_models, "\n")
+cat("Model with the most variations:", model_most_variations, "\n")
+
+```
+
+```{rnum2 a}
+data(mpg)
+
+manufacturer_model_counts <- table(mpg$manufacturer, mpg$model)
+
+manufacturer_unique_models <- sapply(rownames(manufacturer_model_counts), function(manufacturer) {
+  unique_models <- names(which(manufacturer_model_counts[manufacturer,] > 0))
+  return(data.frame(manufacturer = manufacturer, unique_models = length(unique_models)))
+})
+
+print(manufacturer_unique_models)
+
+
+```
+
+```{rnum2 b}
+
+```
+
+#2.1
+```{rnum2.1 a}
+
+```
+
+```{rnum2.1 b}
+
+```
+
+#3
+```{rnum3}
+
+```
+
+#4
+```{rnum4 a}
+
+```
+
+```{rnum4 b}
+
+```
+
+#5
+```{rnum5 a}
+
+```
+
+#6
+```{rnum6}
+```
+
+```{rnum6 a}
+
+```
+
+```{rnum6 b}
+
+```
+
