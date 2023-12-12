@@ -1,0 +1,69 @@
+#1
+data <- read.csv("StudentScore.csv")
+print(data)
+library(Hmisc)
+library(pastecs)
+
+data <- read.csv("StudentScore.csv")
+numeric_columns <- sapply(data, is.numeric)
+hdesc_stats <- describe(data[, numeric_columns])
+pastecs_stats <- stat.desc(data[, numeric_columns])
+
+cat("Descriptive Statistics using Hmisc:\n")
+print(hdesc_stats)
+
+cat("\nDescriptive Statistics using pastecs:\n")
+print(pastecs_stats)
+
+
+
+#2
+
+
+data <- c(10, 10, 10, 20, 20, 50, 10, 20, 10, 50, 20, 50, 20, 10)
+fertilizer_factor <- factor(data, levels = c(10, 20, 50), ordered = TRUE)
+summary(fertilizer_factor)
+#The code creates an ordered factor variable named fertilizer_factor from a numeric vector data representing fertilizer levels. The factor has levels 10, 20, and 50, and the summary displays the count of each level in the dataset. 
+
+
+#3
+
+exercise_levels <- c("l", "n", "n", "i", "l", "l", "n", "n", "i", "l")
+exercise_factor <- factor(exercise_levels, levels = c("n", "l", "i"), ordered = TRUE)
+print(exercise_factor)
+
+#4
+
+
+state <- c("tas", "sa", "qld", "nsw", "nsw", "nt", "wa", "wa", "qld",
+           "vic", "nsw", "vic", "qld", "qld", "sa", "tas", "sa", "nt",
+           "wa", "vic", "qld", "nsw", "nsw", "wa", "sa", "act", "nsw",
+           "vic", "vic", "act")
+
+state_factor <- factor(state, levels = c("act", "nsw", "nt", "qld", "sa", "tas", "vic", "wa"))
+
+state_factor
+#The output indicates that a factor variable called state_factor, which represents the state of origin for 30 Australian tax accountants, was successfully created from a character vector state. "Act" < "nsw" < "nt" < "qld" < "sa" < "tas" < "vic" < "wa" is the sequencing of the factor levels. The factor variable assigns each entry in the original vector to the corresponding level, resulting in an ordered representation of states that can be used for additional analysis or visualization.
+
+#5
+
+incomes <- c(60, 49, 40, 61, 64, 60, 59, 54, 62, 69, 70, 42, 56, 61, 61, 61, 58, 51, 48,
+             65, 49, 49, 41, 48, 52, 46, 59, 46, 58, 43)
+incmeans <- tapply(incomes, state_factor, mean)
+print(incmeans)
+
+#THE RESULT IS  
+#act      nsw       nt      qld       sa      tas      vic       wa 
+#44.50000 57.33333 55.50000 53.60000 55.00000 60.50000 56.00000 52.25000 
+
+#The average incomes for tax accountants in different states are as follows: Australian Capital Territory (ACT) $44,500, New South Wales (NSW) $57,333, Northern Territory (NT) $55,500, Queensland (QLD) $53,600, South Australia (SA) $55,000, Tasmania (TAS) $60,500, Victoria (VIC) $56,000, and Western Australia (WA) $52,250.
+
+#6
+incomes <- c(60, 49, 40, 61, 64, 60, 59, 54, 62, 69, 70, 42, 56, 61, 61, 61, 58, 51, 48,
+             65, 49, 49, 41, 48, 52, 46, 59, 46, 58, 43)
+
+stdError <- function(x) sqrt(var(x) / length(x))
+incster <- tapply(incomes, state_factor, stdError)
+
+print(incster)
+#The standard errors of the mean incomes for tax accountants in different states are as follows: ACT (Australian Capital Territory) 1.50, NSW (New South Wales) 4.31, NT (Northern Territory) 4.50, QLD (Queensland) 4.11, SA (South Australia) 2.74, TAS (Tasmania) 0.50, VIC (Victoria) 5.24, and WA (Western Australia) 2.66.
